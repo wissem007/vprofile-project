@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
         end
     end
     
-  ### Memcache vm  #### 
+  ### jenkins vm  #### 
     config.vm.define "jenkins" do |jenkins|
       jenkins.vm.box = "geerlingguy/centos7"
       jenkins.vm.hostname = "jenkins"
