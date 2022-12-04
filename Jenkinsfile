@@ -22,30 +22,30 @@ pipeline {
     }
 
     stages {
-        // stage('Build'){
-        //     steps {
-        //         sh 'mvn -s settings.xml -DskipTests install'
-        //     }
-        //     post {
-        //         success {
-        //             echo "Now Archiving."
-        //             archiveArtifacts artifacts: '**/*.war'
-        //         }
-        //     }
-        // }
+        stage('Build'){
+            steps {
+                sh 'mvn -s settings.xml -DskipTests install'
+            }
+            post {
+                success {
+                    echo "Now Archiving."
+                    archiveArtifacts artifacts: '**/*.war'
+                }
+            }
+        }
 
-        // stage('Test'){
-        //     steps {
-        //         sh 'mvn -s settings.xml test'
-        //     }
+        stage('Test'){
+            steps {
+                sh 'mvn -s settings.xml test'
+            }
 
-        // }
+        }
 
-        // stage('Checkstyle Analysis'){
-        //     steps {
-        //         sh 'mvn -s settings.xml checkstyle:checkstyle'
-        //     }
-        // }
+        stage('Checkstyle Analysis'){
+            steps {
+                sh 'mvn -s settings.xml checkstyle:checkstyle'
+            }
+        }
 
         stage('Sonar Analysis') {
             environment {
@@ -53,6 +53,7 @@ pipeline {
             }
             steps {
                withSonarQubeEnv("${SONARSERVER}") {
+                   sh export JAVA_HOME='/usr/lib/jvm/jre-11-openjdk'
                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
                    -Dsonar.projectName=vprofile \
                    -Dsonar.projectVersion=1.0 \
