@@ -53,7 +53,7 @@ pipeline {
             }
             steps {
                withSonarQubeEnv("${SONARSERVER}") {
-                   sh export JAVA_HOME='/usr/lib/jvm/jre-11-openjdk'
+                   sh export $JAVA_HOME='/usr/lib/jvm/jre-11-openjdk'
                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
                    -Dsonar.projectName=vprofile \
                    -Dsonar.projectVersion=1.0 \
