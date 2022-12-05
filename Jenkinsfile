@@ -11,7 +11,7 @@ pipeline {
         NEXUS_USER = 'admin'
         NEXUS_PASSWORD = 'admin'
         SNAP_REPO = 'vprofile-snapshot'
-        RELEASE_REPO = 'vprofile-repo'
+        RELEASE_REPO = 'vprofile-release'
         CENTRAL_REPO = 'vprofile-central-repo'
         NEXUS_GRP_REPO = 'vprofile-grp-repo'
         NEXUS_IP = '192.168.33.20'
