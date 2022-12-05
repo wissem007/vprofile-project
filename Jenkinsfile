@@ -72,8 +72,8 @@ pipeline {
                   nexusVersion: 'nexus3',
                   protocol: 'http',
                   nexusUrl: "${NEXUS_IP}:${NEXUS_PORT}",
-                  groupId: 'QA',
-                  version: "${env.BUILD_ID}_${env.BUILD_TIMESTAMP}",
+                  groupId: 'Dev',
+                  version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
                   repository: "${RELEASE_REPO}",
                   credentialsId: "${NEXUS_LOGIN}",
                   artifacts: [
