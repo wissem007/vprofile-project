@@ -39,18 +39,18 @@ pipeline {
             }
         }
 
-        stage('Test'){
-            steps {
-                sh 'mvn -s settings.xml test'
-            }
+        // stage('Test'){
+        //     steps {
+        //         sh 'mvn -s settings.xml test'
+        //     }
 
-        }
+        // }
 
-        stage('Checkstyle Analysis'){
-            steps {
-                sh 'mvn -s settings.xml checkstyle:checkstyle'
-            }
-        }
+        // stage('Checkstyle Analysis'){
+        //     steps {
+        //         sh 'mvn -s settings.xml checkstyle:checkstyle'
+        //     }
+        // }
 
         stage('Sonar Analysis') {
             environment {
@@ -59,7 +59,6 @@ pipeline {
             steps {
                withSonarQubeEnv("${SONARSERVER}") {
                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
-                   -Dsonar.java.jdkHome=/usr/lib/jvm/jre-11-openjdk \
                    -Dsonar.projectName=vprofile \
                    -Dsonar.projectVersion=1.0 \
                    -Dsonar.sources=src/ \
