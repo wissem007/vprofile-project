@@ -20,7 +20,7 @@ pipeline {
         
         stage('BUILD'){
             steps {
-                sh "mvn clean package"
+                sh "mvn clean install -U"
             }
             post {
                 success {
